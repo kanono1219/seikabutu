@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id(); //自動増分のプライマリキー
-            $table->string('category_name', 50); //カテゴリー名
+            $table->string('name', 50); //カテゴリー名
+            $table->timestamps();
         });
     }
 

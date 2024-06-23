@@ -15,7 +15,7 @@
                     <h2 class='name'>
                         <a href="/events/{{ $event->id }}">{{ $event->name }}</a>
                     </h2>
-                    <a href="/categories/{{ $event->category->id }}">{{ $event->category->name }}</a>
+                    <a href="">{{ $event->category->name }}</a>
                     <p class='overview'>{{ $event->overview }}</p>
                     <!-- 以下を追記 -->
                     <form action="/events/{{ $event->id }}" id="form_{{ $event->id }}" method="post">
@@ -29,6 +29,9 @@
         <div class='paginate'>
             {{ $events->links()}}
         <div>
+        <div class="footer">
+            <a href="/">戻る</a>
+        </div>
         <script>
             function deleteEvent(id) {
                 'use strict'

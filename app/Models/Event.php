@@ -4,14 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+    //「1対多」の関係なので単数系に
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
     protected $fillable = [
-    'name',
-    'overview',
+        'name',
+        'overview',
+        'image_url',
+        'category_id',
     ];
     protected $attributes = [
         'category_id' => '1',
@@ -25,6 +34,6 @@ class Event extends Model
     public function getPaginateByLimit(int $limit_count = 5)
     {
     // updated_atを元にDESCで降順に並べたあと、limitで件数制限をかける
-    return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
