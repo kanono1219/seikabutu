@@ -16,11 +16,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            ['category_name' => '祭り',],
-            ['category_name' => '音楽イベント',],
-            ['category_name' => '展示会',],
-            ['category_name' => 'スポーツイベント',],
-            ['category_name' => '式典',],
+            ['name' => '祭り',],
+            ['name' => '音楽イベント',],
+            ['name' => '展示会',],
+            ['name' => 'スポーツイベント',],
+            ['name' => '式典',],
         ]);
     }
 }

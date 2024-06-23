@@ -23,6 +23,7 @@ return new class extends Migration
             $table->dateTime('end_date'); // イベント終了日
             $table->string('image_url')->nullable(); // イベント告知用ポスターのパス
             $table->timestamps();
+            $table->softDeletes(); // これがdeleted_atカラムを追加する
         });
     }
 
